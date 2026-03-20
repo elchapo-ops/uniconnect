@@ -1,0 +1,163 @@
+// Prisma schema for UniConnect Portal
+// https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  student
+  employer
+  admin
+}
+
+enum JobType {
+  full_time
+  part_time
+  internship
+  contract
+}
+
+enum JobStatus {
+  draft
+  active
+  closed
+}
+
+enum PlacementStatus {
+  seeking
+  interviewing
+  placed
+}
+
+enum ApplicationStatus {
+  applied
+  under_review
+  shortlisted
+  interview_scheduled
+  hired
+  rejected
+  withdrawn
+}
+
+enum NotificationType {
+  match
+  status
+  application
+  system
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String    @map("password_hash")
+  role          UserRole
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  student       Student?
+  employer      Employer?
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Student {
+  id              String           @id @default(uuid())
+  userId          String           @unique @map("user_id")
+  name            String
+  university      String?
+  fieldOfStudy    String?          @map("field_of_study")
+  location        String?
+  availability    String?
+  placementStatus PlacementStatus  @default(seeking) @map("placement_status")
+  skills          String[]         @default([])
+  resumeUrl       String?          @map("resume_url")
+  avatarUrl       String?          @map("avatar_url")
+  bio             String?
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  applications    Application[]
+
+  @@map("students")
+}
+
+model Employer {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  companyName String   @map("company_name")
+  industry    String?
+  location    String?
+  size        String?
+  logoUrl     String?  @map("logo_url")
+  description String?
+  website     String?
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobs        Job[]
+
+  @@map("employers")
+}
+
+model Job {
+  id           String    @id @default(uuid())
+  employerId   String    @map("employer_id")
+  title        String
+  description  String
+  location     String
+  type         JobType
+  salary       String?
+  requirements String[]  @default([])
+  skills       String[]  @default([])
+  deadline     DateTime?
+  status       JobStatus @default(draft)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  employer     Employer      @relation(fields: [employerId], references: [id], onDelete: Cascade)
+  applications Application[]
+
+  @@map("jobs")
+}
+
+model Application {
+  id          String            @id @default(uuid())
+  jobId       String            @map("job_id")
+  studentId   String            @map("student_id")
+  status      ApplicationStatus @default(applied)
+  coverLetter String?           @map("cover_letter")
+  matchScore  Int?              @map("match_score")
+  autoApplied Boolean           @default(false) @map("auto_applied")
+  appliedAt   DateTime          @default(now()) @map("applied_at")
+  updatedAt   DateTime          @updatedAt @map("updated_at")
+
+  job         Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  student     Student           @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, studentId])
+  @@map("applications")
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String           @map("user_id")
+  type      NotificationType
+  title     String
+  message   String
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now()) @map("created_at")
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
