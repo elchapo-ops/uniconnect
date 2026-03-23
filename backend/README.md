@@ -1,6 +1,6 @@
-# UniConnect Backend
+# BICS Backend
 
-Node.js/Express backend API for the UniConnect Portal.
+Node.js/Express backend API for the BICS Portal.
 
 ## Tech Stack
 

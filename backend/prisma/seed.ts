@@ -11,10 +11,10 @@ async function main() {
 
   // Create admin user
   const admin = await prisma.user.upsert({
-    where: { email: "admin@uniconnect.com" },
+    where: { email: "admin@BICS.com" },
     update: {},
     create: {
-      email: "admin@uniconnect.com",
+      email: "admin@BICS.com",
       passwordHash: hashedPassword,
       role: "admin",
     },
@@ -27,7 +27,7 @@ async function main() {
   });
 
   console.log("\n📧 Login credentials:");
-  console.log("   Email: admin@uniconnect.com");
+  console.log("   Email: admin@BICS.com");
   console.log("   Password: admin123");
 
   // Optional: Create test student

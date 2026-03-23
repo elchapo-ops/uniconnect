@@ -1,6 +1,6 @@
-# UniConnect AI Service
+# BICS AI Service
 
-A FastAPI-based AI service for job-student matching in the UniConnect Portal.
+A FastAPI-based AI service for job-student matching in the BICS Portal.
 
 ## Features
 

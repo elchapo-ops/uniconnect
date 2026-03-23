@@ -1,4 +1,4 @@
-// Mock data for UniConnect
+// Mock data for BICS
 
 export interface Job {
   id: string;

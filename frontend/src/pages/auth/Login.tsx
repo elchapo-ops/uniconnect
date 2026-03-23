@@ -64,7 +64,7 @@ export default function Login() {
               <GraduationCap className="w-7 h-7 text-primary-foreground" />
             </div>
           </Link>
-          <h1 className="text-2xl font-bold text-foreground">Welcome to UniConnect</h1>
+          <h1 className="text-2xl font-bold text-foreground">Welcome to BICS</h1>
           <p className="text-muted-foreground mt-1">Sign in to access your dashboard</p>
         </div>
 

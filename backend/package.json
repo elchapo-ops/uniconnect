@@ -1,7 +1,7 @@
 {
-  "name": "uniconnect-backend",
+  "name": "BICS-backend",
   "version": "1.0.0",
-  "description": "UniConnect Portal Backend API",
+  "description": "BICS Portal Backend API",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",

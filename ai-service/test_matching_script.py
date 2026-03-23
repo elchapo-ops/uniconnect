@@ -3,7 +3,7 @@ import sys
 import os
 
 # Add the directory to the path so we can import the module
-sys.path.append('/Users/apple/Desktop/uniconnect-portal/ai-service')
+sys.path.append('/Users/apple/Desktop/BICS-portal/ai-service')
 
 from matching import MatchingService
 

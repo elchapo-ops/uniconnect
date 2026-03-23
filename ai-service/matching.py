@@ -1,5 +1,5 @@
 """
-Matching Service for UniConnect AI
+Matching Service for BICS AI
 
 Uses TF-IDF vectorization and cosine similarity to calculate match scores
 between students and jobs based on their skills and descriptions.

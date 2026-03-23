@@ -17,7 +17,7 @@ export default function SplashScreen() {
       <div className="text-center animate-fade-in">
         <div className="relative">
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-4 tracking-tight">
-            UniConnect
+            BICS
           </h1>
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-primary-foreground/30 rounded-full animate-pulse-slow" />
         </div>

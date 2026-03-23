@@ -1,5 +1,5 @@
 """
-UniConnect AI Service - Job Matching API
+BICS AI Service - Job Matching API
 
 This service provides AI-powered matching between students and jobs using
 TF-IDF vectorization and cosine similarity.
@@ -18,8 +18,8 @@ from matching import MatchingService
 load_dotenv()
 
 app = FastAPI(
-    title="UniConnect AI Service",
-    description="AI-powered job matching for UniConnect Portal",
+    title="BICS AI Service",
+    description="AI-powered job matching for BICS Portal",
     version="1.0.0"
 )
 
@@ -94,7 +94,7 @@ class BatchMatchResult(BaseModel):
 async def health_check():
     return {
         "status": "ok",
-        "service": "uniconnect-ai",
+        "service": "BICS-ai",
         "version": "1.0.0"
     }
 

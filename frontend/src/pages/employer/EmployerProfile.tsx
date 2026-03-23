@@ -239,7 +239,7 @@ export default function EmployerProfile() {
                 <Card>
                     <CardHeader>
                         <CardTitle>Hiring Statistics</CardTitle>
-                        <CardDescription>Your performance on UniConnect</CardDescription>
+                        <CardDescription>Your performance on BICS</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

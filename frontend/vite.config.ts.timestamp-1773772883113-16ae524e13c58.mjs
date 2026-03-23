@@ -1,9 +1,9 @@
 // vite.config.ts
-import { defineConfig } from "file:///C:/Users/abrah/OneDrive/Documents/uniconnect%20(1)/uniconnect/frontend/node_modules/vite/dist/node/index.js";
-import react from "file:///C:/Users/abrah/OneDrive/Documents/uniconnect%20(1)/uniconnect/frontend/node_modules/@vitejs/plugin-react-swc/index.js";
+import { defineConfig } from "file:///C:/Users/abrah/OneDrive/Documents/BICS%20(1)/BICS/frontend/node_modules/vite/dist/node/index.js";
+import react from "file:///C:/Users/abrah/OneDrive/Documents/BICS%20(1)/BICS/frontend/node_modules/@vitejs/plugin-react-swc/index.js";
 import path from "path";
-import { componentTagger } from "file:///C:/Users/abrah/OneDrive/Documents/uniconnect%20(1)/uniconnect/frontend/node_modules/lovable-tagger/dist/index.js";
-var __vite_injected_original_dirname = "C:\\Users\\abrah\\OneDrive\\Documents\\uniconnect (1)\\uniconnect\\frontend";
+import { componentTagger } from "file:///C:/Users/abrah/OneDrive/Documents/BICS%20(1)/BICS/frontend/node_modules/lovable-tagger/dist/index.js";
+var __vite_injected_original_dirname = "C:\\Users\\abrah\\OneDrive\\Documents\\BICS (1)\\BICS\\frontend";
 var vite_config_default = defineConfig(({ mode }) => ({
   server: {
     host: "::",

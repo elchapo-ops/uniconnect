@@ -63,7 +63,7 @@ export default function Register() {
       if (result.success) {
         toast({
           title: 'Account created!',
-          description: 'Welcome to UniConnect.',
+          description: 'Welcome to BICS.',
         });
 
         if (role === 'student') navigate('/student/dashboard');
@@ -96,7 +96,7 @@ export default function Register() {
               <GraduationCap className="w-7 h-7 text-primary-foreground" />
             </div>
           </Link>
-          <h1 className="text-2xl font-bold text-foreground">Join UniConnect</h1>
+          <h1 className="text-2xl font-bold text-foreground">Join BICS</h1>
           <p className="text-muted-foreground mt-1">Create your account to get started</p>
         </div>
 

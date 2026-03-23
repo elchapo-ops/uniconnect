@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Bell, LogOut, User, ChevronDown } from 'lucide-react';
+import { Menu, X, Bell, LogOut, User, ChevronDown, Sun, Moon, GraduationCap } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
@@ -29,6 +30,7 @@ export function DashboardLayout({ children, navItems, title }: DashboardLayoutPr
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     logout();
@@ -47,6 +49,13 @@ export function DashboardLayout({ children, navItems, title }: DashboardLayoutPr
         </button>
         <h1 className="font-semibold text-lg">{title}</h1>
         <div className="flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg hover:bg-muted transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
           <button className="p-2 rounded-lg hover:bg-muted transition-colors relative">
             <Bell className="w-5 h-5" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-destructive rounded-full" />
@@ -74,9 +83,9 @@ export function DashboardLayout({ children, navItems, title }: DashboardLayoutPr
           <div className="h-16 flex items-center justify-between px-4 border-b border-sidebar-border">
             <Link to="/" className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-sidebar-primary flex items-center justify-center">
-                <span className="text-sidebar-primary-foreground font-bold text-sm">U</span>
+                <GraduationCap className="w-5 h-5 text-sidebar-primary-foreground" />
               </div>
-              <span className="font-semibold text-sidebar-foreground">UniConnect</span>
+              <span className="font-semibold text-sidebar-foreground">BICS</span>
             </Link>
             <button
               onClick={() => setSidebarOpen(false)}
@@ -144,6 +153,13 @@ export function DashboardLayout({ children, navItems, title }: DashboardLayoutPr
         <header className="hidden lg:flex h-16 items-center justify-between px-6 border-b border-border bg-card">
           <h1 className="text-xl font-semibold">{title}</h1>
           <div className="flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-muted transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
             <button className="p-2 rounded-lg hover:bg-muted transition-colors relative">
               <Bell className="w-5 h-5" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-destructive rounded-full" />
